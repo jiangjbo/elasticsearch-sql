@@ -7,22 +7,14 @@ import org.elasticsearch.common.xcontent.XContentParser;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.plugin.nlpcn.executors.ActionRequestRestExecuterFactory;
 import org.elasticsearch.plugin.nlpcn.executors.RestExecutor;
-import org.elasticsearch.rest.BaseRestHandler;
-import org.elasticsearch.rest.BytesRestResponse;
-import org.elasticsearch.rest.RestController;
-import org.elasticsearch.rest.RestRequest;
-import org.elasticsearch.rest.RestStatus;
+import org.elasticsearch.rest.*;
 import org.nlpcn.es4sql.SearchDao;
 import org.nlpcn.es4sql.exception.SqlParseException;
 import org.nlpcn.es4sql.query.QueryAction;
 
 import java.io.IOException;
 import java.sql.SQLFeatureNotSupportedException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 
 public class RestSqlAction extends BaseRestHandler {
@@ -30,10 +22,10 @@ public class RestSqlAction extends BaseRestHandler {
     private static final Logger LOGGER = LogManager.getLogger();
 
     public RestSqlAction(RestController restController) {
-        restController.registerHandler(RestRequest.Method.POST, "/_sql/_explain", this);
-        restController.registerHandler(RestRequest.Method.GET, "/_sql/_explain", this);
-        restController.registerHandler(RestRequest.Method.POST, "/_sql", this);
-        restController.registerHandler(RestRequest.Method.GET, "/_sql", this);
+        restController.registerHandler(RestRequest.Method.POST, "/_sql2/_explain", this);
+        restController.registerHandler(RestRequest.Method.GET, "/_sql2/_explain", this);
+        restController.registerHandler(RestRequest.Method.POST, "/_sql2", this);
+        restController.registerHandler(RestRequest.Method.GET, "/_sql2", this);
     }
 
     @Override
